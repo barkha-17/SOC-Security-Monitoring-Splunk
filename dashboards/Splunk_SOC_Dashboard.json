@@ -1,0 +1,418 @@
+{
+  "visualizations": {
+    "viz_UltNDfwH": {
+      "type": "splunk.singlevalue",
+      "dataSources": {
+        "primary": "ds_QiO5DWw5"
+      },
+      "title": "Total Security Events"
+    },
+    "viz_TMhzbuPF": {
+      "type": "splunk.singlevalue",
+      "dataSources": {
+        "primary": "ds_Tl9DrH0M"
+      },
+      "title": "Failed Login Attempts"
+    },
+    "viz_NMdwVdqa": {
+      "type": "splunk.singlevalue",
+      "dataSources": {
+        "primary": "ds_5FLY25GE"
+      },
+      "title": "Successful Logins"
+    },
+    "viz_1eCUE60R": {
+      "type": "splunk.line",
+      "dataSources": {
+        "primary": "ds_wKmcDVC4"
+      },
+      "title": "Security Events Over Time"
+    },
+    "viz_B6SyOlXq": {
+      "type": "splunk.table",
+      "dataSources": {
+        "primary": "ds_mm2NryMV"
+      },
+      "title": "Recent Security Events"
+    },
+    "viz_8GNIMLGo": {
+      "type": "splunk.bar",
+      "dataSources": {
+        "primary": "ds_wrSWHnOc"
+      },
+      "title": "Top 10 Security Event IDs"
+    },
+    "viz_fY8EdZe8": {
+      "type": "splunk.bar",
+      "dataSources": {
+        "primary": "ds_oX9LOOZ8"
+      },
+      "title": "Top Hosts"
+    },
+    "viz_LGOGtjBR": {
+      "type": "splunk.pie",
+      "dataSources": {
+        "primary": "ds_W6fSCADT"
+      },
+      "title": "Security Event Distribution"
+    },
+    "viz_ngyP0tUL": {
+      "type": "splunk.line",
+      "dataSources": {
+        "primary": "ds_nsuBA2eg"
+      },
+      "title": "Failed Login Attempts Over Time"
+    },
+    "viz_GSlq2yrV": {
+      "type": "splunk.singlevalue",
+      "dataSources": {
+        "primary": "ds_FybdTQzq"
+      },
+      "title": "Endpoint Telemetry (Sysmon)"
+    },
+    "viz_aeGgS6e8": {
+      "type": "splunk.bar",
+      "dataSources": {
+        "primary": "ds_aQyNIf3r"
+      },
+      "title": "Top Processes"
+    },
+    "viz_UmDiijrv": {
+      "type": "splunk.pie",
+      "dataSources": {
+        "primary": "ds_xnmxySwJ"
+      },
+      "title": "Sysmon Event Distribution"
+    },
+    "viz_fRgVd5PO": {
+      "type": "splunk.table",
+      "dataSources": {
+        "primary": "ds_XnDdhPpD"
+      },
+      "title": "Network Connections"
+    },
+    "viz_QGFYpCmW": {
+      "type": "splunk.table",
+      "dataSources": {
+        "primary": "ds_cMR2FsEp"
+      },
+      "title": "DNS Queries"
+    }
+  },
+  "dataSources": {
+    "ds_QiO5DWw5": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| stats count"
+      },
+      "name": "Search_1"
+    },
+    "ds_Tl9DrH0M": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security EventCode=4625\r\n| stats count"
+      },
+      "name": "Search_2"
+    },
+    "ds_5FLY25GE": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security EventCode=4624\r\n| stats count"
+      },
+      "name": "Search_3"
+    },
+    "ds_wKmcDVC4": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| timechart count"
+      },
+      "name": "Search_4"
+    },
+    "ds_mm2NryMV": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| table _time EventCode Account_Name ComputerName Message\r\n| head 20"
+      },
+      "name": "Search_5"
+    },
+    "ds_wrSWHnOc": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| top limit=10 EventCode"
+      },
+      "name": "Search_6"
+    },
+    "ds_RJy2Q422": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| top limit=10 Account_Name"
+      },
+      "name": "Search_7"
+    },
+    "ds_oX9LOOZ8": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| top limit=10 host"
+      },
+      "name": "Search_8"
+    },
+    "ds_W6fSCADT": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security\r\n| stats count by EventCode"
+      },
+      "name": "Search_9"
+    },
+    "ds_nsuBA2eg": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=WinEventLog:Security EventCode=4625\r\n| timechart count"
+      },
+      "name": "Search_10"
+    },
+    "ds_FybdTQzq": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| stats count"
+      },
+      "name": "Search_11"
+    },
+    "ds_WSh7M4nk": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| rex field=_raw \"<EventID>(?<EventID>\\d+)</EventID>\"\r\n| search EventID=1\r\n| timechart count"
+      },
+      "name": "Search_12"
+    },
+    "ds_aQyNIf3r": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| rex field=_raw \"<Data Name='Image'>(?<Image>.*?)</Data>\"\r\n| top limit=10 Image"
+      },
+      "name": "Search_13"
+    },
+    "ds_xnmxySwJ": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| rex field=_raw \"<EventID>(?<EventID>\\d+)</EventID>\"\r\n| stats count by EventID"
+      },
+      "name": "Search_14"
+    },
+    "ds_XnDdhPpD": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| rex field=_raw \"<EventID>(?<EventID>\\d+)</EventID>\"\r\n| search EventID=3\r\n| table _time host _raw"
+      },
+      "name": "Search_15"
+    },
+    "ds_cMR2FsEp": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=* sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\"\r\n| rex field=_raw \"<EventID>(?<EventID>\\d+)</EventID>\"\r\n| search EventID=22\r\n| table _time host _raw"
+      },
+      "name": "Search_16"
+    }
+  },
+  "defaults": {
+    "dataSources": {
+      "ds.search": {
+        "options": {
+          "queryParameters": {
+            "latest": "$global_time.latest$",
+            "earliest": "$global_time.earliest$"
+          }
+        }
+      },
+      "ds.spl2": {
+        "options": {
+          "queryParameters": {
+            "latest": "$global_time.latest$",
+            "earliest": "$global_time.earliest$"
+          }
+        }
+      }
+    },
+    "visualizations": {
+      "global": {
+        "showProgressBar": true
+      }
+    }
+  },
+  "inputs": {
+    "input_global_trp": {
+      "type": "input.timerange",
+      "options": {
+        "token": "global_time",
+        "defaultValue": "-24h@h,now"
+      },
+      "title": "Global Time Range"
+    }
+  },
+  "layout": {
+    "options": {},
+    "globalInputs": [
+      "input_global_trp"
+    ],
+    "tabs": {
+      "items": [
+        {
+          "layoutId": "layout_1",
+          "label": "New tab"
+        }
+      ]
+    },
+    "layoutDefinitions": {
+      "layout_1": {
+        "type": "grid",
+        "structure": [
+          {
+            "item": "viz_B6SyOlXq",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 2145,
+              "w": 1440,
+              "h": 321
+            }
+          },
+          {
+            "item": "viz_UltNDfwH",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "w": 386,
+              "h": 400
+            }
+          },
+          {
+            "item": "viz_TMhzbuPF",
+            "type": "block",
+            "position": {
+              "x": 386,
+              "y": 0,
+              "w": 398,
+              "h": 400
+            }
+          },
+          {
+            "item": "viz_NMdwVdqa",
+            "type": "block",
+            "position": {
+              "x": 784,
+              "y": 0,
+              "w": 334,
+              "h": 400
+            }
+          },
+          {
+            "item": "viz_GSlq2yrV",
+            "type": "block",
+            "position": {
+              "x": 1118,
+              "y": 0,
+              "w": 322,
+              "h": 400
+            }
+          },
+          {
+            "item": "viz_ngyP0tUL",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 400,
+              "w": 720,
+              "h": 359
+            }
+          },
+          {
+            "item": "viz_1eCUE60R",
+            "type": "block",
+            "position": {
+              "x": 720,
+              "y": 400,
+              "w": 720,
+              "h": 359
+            }
+          },
+          {
+            "item": "viz_fY8EdZe8",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 1461,
+              "w": 720,
+              "h": 331
+            }
+          },
+          {
+            "item": "viz_aeGgS6e8",
+            "type": "block",
+            "position": {
+              "x": 720,
+              "y": 1461,
+              "w": 720,
+              "h": 331
+            }
+          },
+          {
+            "item": "viz_fRgVd5PO",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 1792,
+              "w": 720,
+              "h": 353
+            }
+          },
+          {
+            "item": "viz_QGFYpCmW",
+            "type": "block",
+            "position": {
+              "x": 720,
+              "y": 1792,
+              "w": 720,
+              "h": 353
+            }
+          },
+          {
+            "item": "viz_LGOGtjBR",
+            "type": "block",
+            "position": {
+              "x": 720,
+              "y": 759,
+              "w": 720,
+              "h": 346
+            }
+          },
+          {
+            "item": "viz_UmDiijrv",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 759,
+              "w": 720,
+              "h": 346
+            }
+          },
+          {
+            "item": "viz_8GNIMLGo",
+            "type": "block",
+            "position": {
+              "x": 0,
+              "y": 1105,
+              "w": 1440,
+              "h": 356
+            }
+          }
+        ],
+        "options": {
+          "width": 1440,
+          "height": 960
+        }
+      }
+    }
+  },
+  "description": "",
+  "title": "SOC Security Monitoring Dashboard"
+}
