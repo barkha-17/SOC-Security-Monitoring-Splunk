@@ -191,9 +191,9 @@ Barkha Shah
 
 M.Sc. Digital Forensics & Cyber Security
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/barkha-17
 
-LinkedIn: https://linkedin.com/in/yourprofile
+LinkedIn: https://linkedin.com/in/barkha-shah-24a912285/
 
 ---
 
