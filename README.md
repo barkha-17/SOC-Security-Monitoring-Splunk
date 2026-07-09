@@ -176,8 +176,6 @@ SOC-Security-Monitoring-Splunk/
 └── README.md
 ```
 
----
-
 # 📚 References
 
 - Splunk Documentation
@@ -193,8 +191,14 @@ Barkha Shah
 
 M.Sc. Digital Forensics & Cyber Security
 
+GitHub: https://github.com/yourusername
+
+LinkedIn: https://linkedin.com/in/yourprofile
+
 ---
 
-# ⭐ Repository Purpose
+## 📬 Feedback
 
-This repository showcases a practical SOC monitoring implementation using Splunk Enterprise. It highlights hands-on experience in building a SIEM environment, developing custom detection rules, configuring automated alerts, and analysing endpoint telemetry through real-world attack simulations. The project serves as part of my cybersecurity portfolio and reflects practical skills in security monitoring, threat detection, and incident analysis.
+If you have any suggestions or feedback regarding this project, feel free to connect with me on LinkedIn or open an issue in this repository.
+
+⭐ If you found this project interesting, consider giving it a star.
