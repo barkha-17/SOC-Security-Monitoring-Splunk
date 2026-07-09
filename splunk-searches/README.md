@@ -2,14 +2,22 @@
 
 ## Overview
 
-This folder contains the raw Splunk Search Processing Language (SPL) queries developed during the SOC Security Monitoring project.
+This folder contains the raw Splunk Search Processing Language (SPL) queries developed for the SOC Security Monitoring project.
 
-These queries were used to detect suspicious activities, validate detections, and support the dashboards and alerts configured within Splunk Enterprise.
+These queries were used to:
 
-## Included Queries
+- Detect suspicious activities
+- Build dashboards
+- Configure alerts
+- Validate security events
+
+## Available Queries
 
 - PowerShell Execution
-- Failed Login Attempts
-- DNS Query Monitoring
+- Failed Login Detection
+- DNS Query Detection
+- Process Creation Detection
+- Network Connection Detection
+- Suspicious Process Detection
 
-The queries can be executed directly within Splunk Enterprise and serve as the foundation for the detection rules and scheduled alerts implemented in this project.
+Each `.spl` file can be copied directly into Splunk Enterprise for execution.
