@@ -1,0 +1,3 @@
+index=* sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
+EventID=3
+| stats count by Image DestinationIp DestinationPort
