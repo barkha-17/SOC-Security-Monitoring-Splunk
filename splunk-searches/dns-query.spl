@@ -1,1 +1,3 @@
-
+index=* sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
+EventID=22
+| stats count by QueryName Image
